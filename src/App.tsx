@@ -1,26 +1,75 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState, useContext } from "react";
+import { Container, Card, Pagination, Typography } from "@mui/material";
+import { HeaderBar } from "./components/HeaderBar";
+import { TodoForm } from "./components/TodoForm";
+import { TodoItem } from "./components/TodoItem";
+import { SignInForm } from "./components/SignInForm";
+import { TodoContext } from "./contexts/TodoContext";
+import { styled } from "@mui/material/styles";
 
-function App() {
+export const App = () => {
+  const [openForm, setOpenForm] = useState(false);
+
+  const { totalPagesNumber, handleChangePage, pageNumber, list } =
+    useContext(TodoContext);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <StyledContainer maxWidth="lg">
+        <StyledCard>
+          <HeaderBar handleClickOpenForm={() => setOpenForm(true)} />
+          <TodoForm
+            openForm={openForm}
+            handleCloseAddForm={() => setOpenForm(false)}
+            todo={null}
+            edit={false}
+          />
+          <SignInForm />
+          {list.length ? (
+            list.map((todo) => {
+              return <TodoItem key={todo._id} todo={todo} />;
+            })
+          ) : (
+            <StyledTypography color={"primary"} variant="h5">
+              No todos yet
+            </StyledTypography>
+          )}
+          <StyledPagination
+            count={totalPagesNumber}
+            page={pageNumber}
+            onChange={handleChangePage}
+          />
+        </StyledCard>
+      </StyledContainer>
     </div>
   );
-}
+};
 
-export default App;
+const StyledCard = styled(Card)({
+  margin: "auto",
+  minHeight: "345px",
+  width: 800,
+  height: "100%",
+  display: "flex",
+  alignContent: "center",
+  flexDirection: "column",
+});
+
+const StyledPagination = styled(Pagination)({
+  marginTop: "auto",
+  paddingTop: "20px",
+  marginBottom: "20px",
+  marginLeft: "auto",
+  marginRight: "auto",
+});
+
+const StyledTypography = styled(Typography)({
+  margin: "auto",
+});
+
+const StyledContainer = styled(Container)({
+  minHeight: "100vh",
+  display: "flex",
+  alignContent: "center",
+  justifyContent: "center",
+});

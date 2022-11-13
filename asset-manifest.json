@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/frontend-todo-test/static/css/main.e6c13ad2.css",
-    "main.js": "/frontend-todo-test/static/js/main.916d96ca.js",
+    "main.js": "/frontend-todo-test/static/js/main.329e515b.js",
     "index.html": "/frontend-todo-test/index.html",
     "main.e6c13ad2.css.map": "/frontend-todo-test/static/css/main.e6c13ad2.css.map",
-    "main.916d96ca.js.map": "/frontend-todo-test/static/js/main.916d96ca.js.map"
+    "main.329e515b.js.map": "/frontend-todo-test/static/js/main.329e515b.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.916d96ca.js"
+    "static/js/main.329e515b.js"
   ]
 }

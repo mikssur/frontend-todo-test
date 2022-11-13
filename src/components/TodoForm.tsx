@@ -50,7 +50,7 @@ export const TodoForm = ({ openForm, handleCloseAddForm, todo, edit }: Props) =>
     };
     if (edit) {
       const response = await axios.put(
-        `https://3.253.4.69:5000/todo/updateTodoContent`,
+        `http://3.253.4.69:5000/todo/updateTodoContent`,
         {
           content: data.ContentField,
           id: todo?._id,
@@ -70,7 +70,7 @@ export const TodoForm = ({ openForm, handleCloseAddForm, todo, edit }: Props) =>
         setOpenAlertEdit(true);
       }
     } else {
-      const response = await axios.post(`https://3.253.4.69:5000/todo/createTodo`, {
+      const response = await axios.post(`http://3.253.4.69:5000/todo/createTodo`, {
         content: data.ContentField,
         userName: data.TextField,
         userEmail: data.EmailField,

@@ -88,7 +88,7 @@ export const TodoProvider: FC<ProviderProps> = ({ children }) => {
 
   const getTodos = useCallback(async () => {
     const response = await axios.get(
-      `https://3.253.4.69:5000/todo/allTodos/?page=${currentPage}&sort=${sort}&checked=${checked}`
+      `http://3.253.4.69:5000/todo/allTodos/?page=${currentPage}&sort=${sort}&checked=${checked}`
     );
     const json = await response.data;
 

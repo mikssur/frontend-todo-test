@@ -32,7 +32,7 @@ export const AuthProvider: FC<ProviderProps> = ({ children }) => {
 
   const handleLogOut = async () => {
     cookies.set("token", "", { path: "/" });
-    await axios.put("http://3.253.4.69:5000/auth/logout", { login: "admin" });
+    await axios.put("https://3.253.4.69:5000/auth/logout", { login: "admin" });
     setIsAdmin(false);
   };
 
@@ -51,7 +51,7 @@ export const AuthProvider: FC<ProviderProps> = ({ children }) => {
       },
     };
     const response = await axios.post(
-      "http://3.253.4.69:5000/auth/checkToken",
+      "https://3.253.4.69:5000/auth/checkToken",
       {
         login: "admin",
       },

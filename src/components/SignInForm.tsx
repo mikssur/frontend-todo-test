@@ -38,7 +38,7 @@ export const SignInForm = () => {
   const { openSignInForm, setIsAdmin, handleCloseSignInForm } = useContext(AuthContext);
 
   const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
-    const response = await axios.post(`http://3.253.4.69:5000/auth/login`, {
+    const response = await axios.post(`https://3.253.4.69:5000/auth/login`, {
       login: data.LoginField,
       password: data.PassField,
     });

@@ -30,7 +30,9 @@ export const HeaderBar = ({ handleClickOpenForm }: Props) => {
 
   const handleLogOut = async () => {
     cookies.set("token", "", { path: "/" });
-    await axios.put("https://mikssur-test-todo-backend.herokuapp.com/auth/logout", { login: "admin" });
+    await axios.put("https://mikssur-test-todo-backend.herokuapp.com/auth/logout", {
+      login: "admin",
+    });
     setIsAdmin(false);
     setTodoListRefresh(!todoListRefresh);
   };
@@ -76,6 +78,8 @@ export const HeaderBar = ({ handleClickOpenForm }: Props) => {
               <MenuItem value={""}>None</MenuItem>
             </Select>
           </StyledFormControl>
+        </BarLeftSection>
+        <BarRightSection>
           <FormControlLabel
             label="Reverse sort"
             control={
@@ -87,17 +91,16 @@ export const HeaderBar = ({ handleClickOpenForm }: Props) => {
               />
             }
           ></FormControlLabel>
-        </BarLeftSection>
-
-        {isAdmin ? (
-          <StyledTypography onClick={handleLogOut} variant="h6">
-            Sign out
-          </StyledTypography>
-        ) : (
-          <StyledTypography onClick={handleOpenSignInForm} variant="h6">
-            Sign In
-          </StyledTypography>
-        )}
+          {isAdmin ? (
+            <StyledTypography onClick={handleLogOut} variant="h6">
+              Sign out
+            </StyledTypography>
+          ) : (
+            <StyledTypography onClick={handleOpenSignInForm} variant="h6">
+              Sign In
+            </StyledTypography>
+          )}
+        </BarRightSection>
       </StyledContainer>
     </AppBar>
   );
@@ -107,6 +110,18 @@ const BarLeftSection = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+  },
+}));
+
+const BarRightSection = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column-reverse",
+  },
 }));
 
 const StyledContainer = styled(Container)({

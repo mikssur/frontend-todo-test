@@ -50,7 +50,7 @@ export const TodoForm = ({ openForm, handleCloseAddForm, todo, edit }: Props) =>
     };
     if (edit) {
       const response = await axios.put(
-        `http://3.253.4.69:5000/todo/updateTodoContent`,
+        `https://mikssur-test-todo-backend.herokuapp.com/todo/updateTodoContent`,
         {
           content: data.ContentField,
           id: todo?._id,
@@ -70,13 +70,16 @@ export const TodoForm = ({ openForm, handleCloseAddForm, todo, edit }: Props) =>
         setOpenAlertEdit(true);
       }
     } else {
-      const response = await axios.post(`http://3.253.4.69:5000/todo/createTodo`, {
-        content: data.ContentField,
-        userName: data.TextField,
-        userEmail: data.EmailField,
-        status: false,
-        edit: false,
-      });
+      const response = await axios.post(
+        `https://mikssur-test-todo-backend.herokuapp.com/todo/createTodo`,
+        {
+          content: data.ContentField,
+          userName: data.TextField,
+          userEmail: data.EmailField,
+          status: false,
+          edit: false,
+        }
+      );
       const json = await response.data;
       if (json.status === "success") {
         handleCloseAddForm();

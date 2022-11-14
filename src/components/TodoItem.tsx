@@ -43,7 +43,7 @@ export const TodoItem = ({ todo }: Props) => {
       },
     };
     const response = await axios.put(
-      `http://3.253.4.69:5000/todo/updateTodoStatus`,
+      `https://mikssur-test-todo-backend.herokuapp.com/todo/updateTodoStatus`,
       {
         id: _id,
         login: "admin",

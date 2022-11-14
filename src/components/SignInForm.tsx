@@ -38,10 +38,13 @@ export const SignInForm = () => {
   const { openSignInForm, setIsAdmin, handleCloseSignInForm } = useContext(AuthContext);
 
   const onSubmit: SubmitHandler<IFormInputs> = async (data) => {
-    const response = await axios.post(`http://3.253.4.69:5000/auth/login`, {
-      login: data.LoginField,
-      password: data.PassField,
-    });
+    const response = await axios.post(
+      `https://mikssur-test-todo-backend.herokuapp.com/auth/login`,
+      {
+        login: data.LoginField,
+        password: data.PassField,
+      }
+    );
     const json = await response.data;
 
     if (json.status === "success") {

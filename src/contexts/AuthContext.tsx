@@ -32,7 +32,9 @@ export const AuthProvider: FC<ProviderProps> = ({ children }) => {
 
   const handleLogOut = async () => {
     cookies.set("token", "", { path: "/" });
-    await axios.put("http://3.253.4.69:5000/auth/logout", { login: "admin" });
+    await axios.put("https://mikssur-test-todo-backend.herokuapp.com/auth/logout", {
+      login: "admin",
+    });
     setIsAdmin(false);
   };
 
@@ -51,7 +53,7 @@ export const AuthProvider: FC<ProviderProps> = ({ children }) => {
       },
     };
     const response = await axios.post(
-      "http://3.253.4.69:5000/auth/checkToken",
+      "https://mikssur-test-todo-backend.herokuapp.com/auth/checkToken",
       {
         login: "admin",
       },

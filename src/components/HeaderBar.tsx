@@ -30,7 +30,7 @@ export const HeaderBar = ({ handleClickOpenForm }: Props) => {
 
   const handleLogOut = async () => {
     cookies.set("token", "", { path: "/" });
-    await axios.put("http://3.253.4.69:5000/auth/logout", { login: "admin" });
+    await axios.put("https://mikssur-test-todo-backend.herokuapp.com/auth/logout", { login: "admin" });
     setIsAdmin(false);
     setTodoListRefresh(!todoListRefresh);
   };

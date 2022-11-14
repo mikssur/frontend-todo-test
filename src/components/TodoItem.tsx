@@ -72,18 +72,13 @@ export const TodoItem = ({ todo }: Props) => {
         <StyledTypography>
           {content.length > 10 ? content.slice(0, 10) + "..." : content}
         </StyledTypography>
-        <StyledTypography>{userName}</StyledTypography>
-        <StyledTypography>{userEmail}</StyledTypography>
+        <StyledMiddleSection>
+          <StyledTypography>{userName}</StyledTypography>
+          <StyledTypography>{userEmail}</StyledTypography>
+        </StyledMiddleSection>
         <DoneSection>
           <Typography>Done:&nbsp;</Typography>
           <StyledCheckbox
-            sx={{
-              color: "green",
-              "&.Mui-checked": {
-                color: "green",
-              },
-              textAlign: "center",
-            }}
             onChange={handleChange}
             onClick={(e) => {
               e.stopPropagation();
@@ -170,3 +165,13 @@ const StyledAccordionSummary = styled(AccordionSummary)({
   alignItems: "center",
   width: "100%",
 });
+
+const StyledMiddleSection = styled("div")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  width: "100%",
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+  },
+}));

@@ -140,6 +140,7 @@ const StyledButton = styled(Button)({
 
 const StyledFormControl = styled(FormControl)({
   minWidth: 100,
+  paddingRight: "47px",
 });
 
 const StyledInputLabel = styled(InputLabel)({

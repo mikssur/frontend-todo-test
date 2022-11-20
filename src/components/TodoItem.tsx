@@ -69,9 +69,9 @@ export const TodoItem = ({ todo }: Props) => {
         id="panel1bh-header"
         expandIcon={<ExpandMoreIcon />}
       >
-        <StyledTypography>
+        <StyledTypographyContentDetails>
           {content.length > 10 ? content.slice(0, 10) + "..." : content}
-        </StyledTypography>
+        </StyledTypographyContentDetails>
         <StyledMiddleSection>
           <StyledTypography>{userName}</StyledTypography>
           <StyledTypography>{userEmail}</StyledTypography>
@@ -130,6 +130,15 @@ const StyledTypography = styled(Typography)({
   alignItems: "center",
   width: "100%",
 });
+
+const StyledTypographyContentDetails = styled(Typography)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  width: "100%",
+  [theme.breakpoints.down("sm")]: {
+    display: "none",
+  },
+}));
 
 const StyledTypographySecondary = styled(Typography)({
   display: "flex",

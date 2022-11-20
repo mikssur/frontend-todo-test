@@ -51,6 +51,8 @@ export const SignInForm = () => {
       cookies.set("token", json.token, { path: "/" });
       handleCloseSignInForm();
       setIsAdmin(true);
+      setOpenAlertEdit(false);
+      setOpenAlert(false);
     } else if (json.status === "error") {
       setOpenAlert(true);
     }

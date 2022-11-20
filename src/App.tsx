@@ -47,7 +47,7 @@ export const App = () => {
 
 const StyledCard = styled(Card)({
   margin: "auto",
-  minHeight: "345px",
+  minHeight: "400px",
   width: 800,
   height: "100%",
   display: "flex",
